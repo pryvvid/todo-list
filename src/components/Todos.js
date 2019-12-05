@@ -5,7 +5,7 @@ import Rainbow from './Rainbow';
 
 import { connect } from 'react-redux';
 
-import { removeTodo } from './reducer';
+import { removeTodo } from '../reducers/reducer';
 
 const Todos = ({todos, removeTodo}) => {
 

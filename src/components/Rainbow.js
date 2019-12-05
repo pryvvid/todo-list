@@ -8,7 +8,6 @@ const Rainbow = (WrappedComponent) => {
   const className = randomColor + '-text';
 
   return (props) => {
-    console.log(randomNumber);
     return (
       <div className={className}>
         <WrappedComponent {...props} />
