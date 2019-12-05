@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Rainbow from './Rainbow';
+
 import { connect } from 'react-redux';
 
 import { removeTodo } from './reducer';
@@ -46,4 +48,4 @@ const mapDispatchToProps = {
   removeTodo
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Todos);
+export default connect(mapStateToProps, mapDispatchToProps)(Rainbow(Todos));
