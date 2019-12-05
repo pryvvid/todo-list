@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 
 import { connect } from 'react-redux';
 
 import { newTodo } from './reducer';
 
 class AddTodo extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       content: ''
@@ -21,8 +22,9 @@ class AddTodo extends Component {
   }
 
   handleSubmit = (e) => {
+    const { newTodo } = this.props;
     e.preventDefault();
-    this.props.newTodo(this.state);
+    newTodo(this.state);
     this.setState({
       content: ''
     })
@@ -46,6 +48,10 @@ class AddTodo extends Component {
       </div>
     )
   }
+}
+
+AddTodo.propTypes = {
+  newTodo: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => {

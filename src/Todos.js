@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 
@@ -27,6 +28,14 @@ const Todos = ({todos, removeTodo}) => {
       {todoList}
     </div>
   )
+}
+
+Todos.propTypes = {
+  todos: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    content: PropTypes.string.isRequired
+  }).isRequired).isRequired,
+  removeTodo: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => {
