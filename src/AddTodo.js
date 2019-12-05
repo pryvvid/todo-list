@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+
+import { newTodo } from './reducer';
+
 class AddTodo extends Component {
-  state = {
-    content: ''
+  constructor() {
+    super();
+
+    this.state = {
+      content: ''
+    }
   }
+  
 
   handleChange = (e) => {
     this.setState({
@@ -13,7 +22,7 @@ class AddTodo extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.addTodo(this.state);
+    this.props.newTodo(this.state);
     this.setState({
       content: ''
     })
@@ -24,9 +33,14 @@ class AddTodo extends Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <label>Add new Todo:</label>
-          <input onChange={this.handleChange} value={this.state.content} />
-          <button onSubmit={this.handleSubmit}>
-            Add
+          <input onChange={this.handleChange} 
+            value={this.state.content} 
+            />
+          <button 
+            className="waves-effect waves-light btn-large" 
+            onSubmit={this.handleSubmit}
+            >
+            Add Todo
           </button>
         </form>
       </div>
@@ -34,4 +48,12 @@ class AddTodo extends Component {
   }
 }
 
-export default AddTodo;
+const mapStateToProps = state => {
+  return state;
+}
+
+const mapDispatchToProps = {
+  newTodo
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddTodo); 
